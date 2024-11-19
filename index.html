@@ -9,8 +9,9 @@
     <a-scene fog="type: exponential; color: #aabfff; density: 0.02">
       <!-- ASSETS -->
       <a-assets>
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg"</img> 
-        <img id="skyTexture" src="https://cdn.glitch.global/345acae9-0caa-436f-b9d6-584d0b6cf8dc/brandon-morgan-H5Wv1YdbZzk-unsplash.jpg?v=1732056403862">
+        <!-- Textures -->
+      <img id="skyTexture" src="https://cdn.glitch.global/b881c177-32d3-4706-b976-d21ad8bc476e/brandon-morgan-H5Wv1YdbZzk-unsplash.jpg?v=1732048601099">
+      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
       </a-assets>
 
       <!-- SKY -->
@@ -42,7 +43,7 @@
       <script>
         AFRAME.registerComponent("shape-spawner", {
           schema: {
-            shapes: { type: "array", default: ["voxelCube", "voxelSphere", "voxelPyramid"] }
+            shapes: { type: "array", default: ["voxelCube", "voxelSphere", "voxelCone"] }
           },
           init: function () {
             this.el.addEventListener("click", () => {
@@ -61,7 +62,7 @@
       <a-mixin
         id="voxelCube"
         geometry="primitive: box; height: 1; width: 1; depth: 1"
-        material="color: #4CC3D9; shader: flat"
+        material="src: #boxTexture; shader: standard"
         animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 500; easing: easeOutElastic"
         animation__rotation="property: rotation; to: 0 360 0; dur: 5000; loop: true"
       ></a-mixin>
@@ -69,15 +70,15 @@
       <a-mixin
         id="voxelSphere"
         geometry="primitive: sphere; radius: 0.5"
-        material="color: #EF2D5E; shader: flat"
+        material="src: #sphereTexture; shader: standard"
         animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 500; easing: easeOutElastic"
         animation__rotation="property: rotation; to: 0 360 0; dur: 5000; loop: true"
       ></a-mixin>
 
       <a-mixin
-        id="voxelPyramid"
+        id="voxelCone"
         geometry="primitive: cone; radiusBottom: 0.5; radiusTop: 0; height: 1"
-        material="color: #FFC65D; shader: flat"
+        material="src: #coneTexture; shader: standard"
         animation__scale="property: scale; to: 1.5 1.5 1.5; dur: 500; easing: easeOutElastic"
         animation__rotation="property: rotation; to: 0 360 0; dur: 5000; loop: true"
       ></a-mixin>
